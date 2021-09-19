@@ -28,7 +28,7 @@ const Cart = (): JSX.Element => {
   }))
   const total = formatPrice(
     cart.reduce((sumTotal, product) => {
-      return sumTotal += product.price;
+      return sumTotal += product.price * product.amount;
     }, 0)
   )
 
@@ -56,9 +56,9 @@ const Cart = (): JSX.Element => {
             <th aria-label="delete icon" />
           </tr>
         </thead>
-        {cartFormatted.map(product => (
-          <tbody key={product.id}>
-            <tr data-testid="product">
+        <tbody >
+          {cartFormatted.map(product => (
+            <tr key={product.id} data-testid="product">
               <td>
                 <img src={product.image} alt={product.title} />
               </td>
@@ -104,8 +104,8 @@ const Cart = (): JSX.Element => {
                 </button>
               </td>
             </tr>
-          </tbody>
         ))}
+        </tbody>
       </ProductTable>
 
       <footer>

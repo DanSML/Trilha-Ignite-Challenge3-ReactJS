@@ -140,7 +140,7 @@ export function CartProvider({ children }: CartProviderProps): JSX.Element {
         } else {
 
           const updatedProduct = updatedCart.map((productStocky) => {
-            if (productToUpdate) {
+            if (productStocky.id === productId) {
               return {
                 ...productStocky,
                 amount:amount
